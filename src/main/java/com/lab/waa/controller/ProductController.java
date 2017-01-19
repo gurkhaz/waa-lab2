@@ -16,6 +16,18 @@ public class ProductController {
 
 	@Autowired
 	OrderService service;
+	
+	
+	@RequestMapping(value = "/")
+	public String getHome(){
+		
+		
+		
+		return "redirect:products";
+		
+	}
+	
+	
 
 	@RequestMapping(value = "/products")
 	public String getAllProducts(Model model) {
@@ -25,6 +37,9 @@ public class ProductController {
 		return "product";
 
 	}
+	
+	
+	
 	
 	@RequestMapping(value = "/getProduct/{productId}")
 	public String getPorductById(@PathVariable String productId,Model model){
