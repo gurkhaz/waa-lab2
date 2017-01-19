@@ -66,7 +66,7 @@ public class InMemoryProductRepository implements ProductRepository {
 	
 	public Product getProductById(String id) {
 			
-		System.out.println(id+" by id");
+		
 		
 		/*List<Product> aa = listOfProduct.stream().filter(a -> a.getProductId().equals(id))
 				.collect(Collectors.toList());

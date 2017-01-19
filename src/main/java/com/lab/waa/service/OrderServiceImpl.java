@@ -20,9 +20,7 @@ public class OrderServiceImpl implements OrderService {
 
 
 		Product orderedProduct =  productRepository.getProductById(productId);
-		System.out.println(productId);
-		System.out.println(quantity);
-		System.out.println(orderedProduct);
+		
 		
 		if(orderedProduct !=null)
 		{
