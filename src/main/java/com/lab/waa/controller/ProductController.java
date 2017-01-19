@@ -11,26 +11,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.lab.waa.model.Product;
 import com.lab.waa.service.OrderService;
 
-
-
-
 @Controller
 public class ProductController {
 
 	@Autowired
 	OrderService service;
-	
-	
+
 	@RequestMapping(value = "/")
-	public String getHome(){
-		
-		
-		
+	public String getHome() {
+
 		return "redirect:products";
-		
+
 	}
-	
-	
 
 	@RequestMapping(value = "/products")
 	public String getAllProducts(Model model) {
@@ -40,33 +32,23 @@ public class ProductController {
 		return "product";
 
 	}
-	
-	
-	
-	
+
 	@RequestMapping(value = "/getProduct/{productId}")
-	public String getPorductById(@PathVariable String productId,Model model){
-		
+	public String getPorductById(@PathVariable String productId, Model model) {
+
 		model.addAttribute("product", service.getProductById(productId));
-		
+
 		return "detail";
-		
+
 	}
-	
-	
-	
-	@RequestMapping(value = "/getProduct/processOrder", method = RequestMethod.POST  )
-	public String processOrder(Model model, @RequestParam String productId, @RequestParam long qty){
-		
-		
+
+	@RequestMapping(value = "/getProduct/processOrder", method = RequestMethod.POST)
+	public String processOrder(Model model, @RequestParam String productId, @RequestParam long qty) {
+
 		service.processOrder(productId, qty);
 		model.addAttribute("products", service.getAllProducts());
-		
+
 		return "redirect:/products";
 	}
-	
-	
-	
-	
 
 }
