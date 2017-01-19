@@ -38,7 +38,7 @@
 				<th>Quantity</th><td>	<input type="text" name="qty" placeholder="Quantity" /></td>
 				</tr>
 				<tr>
-				<th></th><td>	<input type="submit" value="Order"	class="btn btn-success "></td>
+				<th></th><td>	<input type="hidden" value="${product.productId} " name="productId" /><input type="submit" value="Order"	class="btn btn-success "></td>
 				</tr>
 				
 			</table>

@@ -4,7 +4,7 @@ import com.lab.waa.model.Product;
 
 public interface OrderService {
 	
-	public void processOrder(String productId, int quantity);
+	public void processOrder(String productId, long qty);
 
 	public Object getAllProducts();
 	

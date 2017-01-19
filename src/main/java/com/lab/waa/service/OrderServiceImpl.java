@@ -16,9 +16,27 @@ public class OrderServiceImpl implements OrderService {
 	ProductRepository productRepository;
 
 	@Override
-	public void processOrder(String productId, int quantity) {
+	public void processOrder(String productId, long quantity) {
 
-		// Product orderProduct = productRepository.getProductById(productId);
+
+		Product orderedProduct =  productRepository.getProductById(productId);
+		System.out.println(productId);
+		System.out.println(quantity);
+		System.out.println(orderedProduct);
+		
+		if(orderedProduct !=null)
+		{
+			if(quantity < orderedProduct.getUnitsInStock())
+			{
+				orderedProduct.setUnitsInStock(orderedProduct.getUnitsInStock()-quantity);
+				System.out.println("service page");
+			}
+			else
+			{
+				throw new IllegalArgumentException();
+			}
+		}
+		
 
 	}
 
@@ -31,10 +49,12 @@ public class OrderServiceImpl implements OrderService {
 		// }
 		//
 		// }
-		List<Product> aa = productRepository.getAllProducts().stream().filter(a -> a.getProductId().equals(id))
+		/*List<Product> aa = productRepository.getAllProducts().stream().filter(a -> a.getProductId().equals(id))
 				.collect(Collectors.toList());
 
-		return aa.size() > 0 ? aa.get(0) : null;
+		return aa.size() > 0 ? aa.get(0) : null;*/
+		
+		return productRepository.getProductById(id);
 
 	}
 

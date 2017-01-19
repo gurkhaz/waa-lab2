@@ -3,13 +3,16 @@ package com.lab.waa.persistance;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.lab.waa.model.Product;
 
 @Repository
 public class InMemoryProductRepository implements ProductRepository {
+	
 	
 	private final List<Product> listOfProduct;
 	
@@ -57,6 +60,28 @@ public class InMemoryProductRepository implements ProductRepository {
 	public List<Product> getAllProducts() {
 		
 		return listOfProduct;
+
+	}
+	
+	
+	public Product getProductById(String id) {
+			
+		System.out.println(id+" by id");
+		
+		/*List<Product> aa = listOfProduct.stream().filter(a -> a.getProductId().equals(id))
+				.collect(Collectors.toList());
+		
+		System.out.println(aa.size()+" size");
+		return aa.size() > 0 ? aa.get(0) : null;*/
+		
+		for (Product product : listOfProduct) {
+			if(product.getProductId().equals(id.trim()))
+			{
+				return product;
+			}
+		}
+	
+		return null;
 
 	}
 
